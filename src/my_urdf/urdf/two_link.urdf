@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot name="two_link">
+    <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.31 0.16 2.8"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <material name="white"/>
+        </visual>
+    </link>
+    <link name="link1">
+        <visual>
+            <geometry>
+                <box size="0.31 0.16 1.8"/>
+            </geometry>
+            <origin xyz="0 0 0.8" rpy="0 0 0"/>
+        </visual>
+    </link>
+    <joint name="joint1" type="continuous">
+        <parent link="base_link"/>
+        <child link="link1"/>
+        <origin xyz="0 0.16 1.3" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    <ros2_control name="two_link_system" type="system">
+        <hardware>
+            <plugin>mock_components/GenericSystem</plugin>
+        </hardware>
+        <joint name="joint1">
+            <command_interface name="position"/>
+            <state_interface name="position"/>
+        </joint>
+    </ros2_control>
+</robot>

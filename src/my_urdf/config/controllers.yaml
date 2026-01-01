@@ -1,0 +1,6 @@
+forward_command_controller:
+  ros__parameters:
+    type: forward_command_controller/ForwardCommandController
+    joints:
+      - joint1
+    interface_name: position
